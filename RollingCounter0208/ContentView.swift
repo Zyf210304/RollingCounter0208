@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var value: Int = 0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack(spacing: 25) {
+                RollingText(font: .system(size: 55), weight: .black, value: $value)
+                
+                Button("Change Value") {
+                    value = .random(in: 0...2000)
+                }
+            }
+            .padding()
+            .navigationTitle("Rolling Counter")
         }
-        .padding()
     }
 }
 
